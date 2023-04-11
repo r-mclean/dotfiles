@@ -301,3 +301,10 @@ bar {
     }
 }
 
+# launch dunst
+exec --no-startup-id dunst
+
+# dunst keyboard shortcuts
+bindsym $mod+x exec dunstctl close-all
+bindsym Ctrl+BackSpace exec dunstctl history-pop
+

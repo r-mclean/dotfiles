@@ -28,13 +28,17 @@
 *.color15: #ffffff
 
 !URxvt*font: xft:DejaVuSansMono:size=10:antialias=true
-URxvt*font: xft:Inconsolata Nerd Font Mono:style=Medium:size=14:pixelsize=16:antialias=true
+URxvt*font: xft:Inconsolata Nerd Font Mono:style=Medium:size=14:pixelsize=14:antialias=true
+#URxvt*font: xft:JetBrains Nerd Font Mono:style=Medium:size=14:pixelsize=16:antialias=true
 URxvt*letterspace: -1
 URxvt*borderLess: false
 URxvt*externalBorder: 0
 URxvt*internalBorder: 4
 URxvt*scrollBar: false
 URxvt*saveLines: 5000
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 URxvt*keysym.Control-Shift-V: eval:paste_clipboard
 URxvt*keysym.Control-Shift-C: eval:selection_to_clipboard

@@ -28,14 +28,23 @@ source $DOTFILES/zsh/scripts.sh
 
 # set up fzf
 if [ $(command -v "fzf") ]; then
+    # fzf is installed by pacman on Arch
     source /usr/share/fzf/completion.zsh
     source /usr/share/fzf/key-bindings.zsh
+elif [ -x "$DOTFILES/zsh/external/fzf/bin/fzf" ]; then
+    export PATH="${PATH:+${PATH}:}$DOTFILES/zsh/external/fzf/bin"
+    source "$DOTFILES/zsh/external/fzf/shell/completion.zsh"
+    source "$DOTFILES/zsh/external/fzf/shell/key-bindings.zsh"
 fi
 
 # start i3 at login
 source $XDG_CONFIG_HOME/i3/start_i3
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ $(uname -s) != 'Darwin' ]; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    source $XDG_CONFIG_HOME/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # setup pyenv
 export PYENV_ROOT=$HOME/.pyenv

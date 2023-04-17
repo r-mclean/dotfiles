@@ -1,3 +1,7 @@
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 " Plugins
 call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'chrisbra/csv.vim'
@@ -21,7 +25,7 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'morhetz/gruvbox'
     
     " rails development
-    Plug 'tpope/vim-rails'
+    "Plug 'tpope/vim-rails'
 call plug#end()
 
 set clipboard+=unnamedplus
@@ -63,11 +67,16 @@ augroup filetype_csv
 augroup END
 
 " Config for fzf.vim
+if has('mac')
+    set rtp+=~/dotfiles/zsh/external/fzf
+endif
 nnoremap <leader>f :Files<cr>
 
 " config for gruvbox
 let g:gruvbox_italic=1
 let g:gruvbox_underline=1
+"let g:gruvbox_contrast_dark='hard'
+autocmd vimenter * ++nested set background=dark
 autocmd vimenter * ++nested colorscheme gruvbox
 
 " config for vim-airline

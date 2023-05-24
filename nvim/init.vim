@@ -63,7 +63,7 @@ augroup filetype_csv
     autocmd!
 
     autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
-    autocmd BufWritePre *.csv :%UnArrangeColumn!
+    autocmd BufWritePre *.csv :%UnArrangeColumn
 augroup END
 
 " Config for fzf.vim

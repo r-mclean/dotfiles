@@ -58,14 +58,6 @@ let mapleader = "\<space>"
 nnoremap <leader>bn :bn<cr> ;buffer next
 nnoremap <leader>tn gt ;new tab
 
-" config for chrisbra/csv.vim
-augroup filetype_csv
-    autocmd!
-
-    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
-    autocmd BufWritePre *.csv :%UnArrangeColumn
-augroup END
-
 " Config for fzf.vim
 if has('mac')
     set rtp+=~/dotfiles/zsh/external/fzf
@@ -147,4 +139,14 @@ endfunction
 
 " symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
+
+" config for chrisbra/csv.vim
+augroup filetype_csv
+    autocmd!
+
+    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
+    autocmd BufWritePre *.csv :%UnArrangeColumn
+    inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm()
+        \: "\<C-g>u\<Tab>\<c-r>=coc#on_enter()\<CR>"
+augroup END
 

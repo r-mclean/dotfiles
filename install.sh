@@ -34,8 +34,8 @@ rm -rf "$XDG_CONFIG_HOME/i3"
 ln -s "$DOTFILES/i3" "$XDG_CONFIG_HOME"
 
 # Arch linux specific
-if [ $(uname -s) != 'Darwin' ]; then
-
+case "$OSTYPE" in
+    linux*)
     rm -rf "$XDG_CONFIG_HOME/X11"
     ln -s "$DOTFILES/X11" "$XDG_CONFIG_HOME"
 
@@ -50,7 +50,7 @@ if [ $(uname -s) != 'Darwin' ]; then
     #######
     mkdir -p "$XDG_CONFIG_HOME/dunst"
     ln -sf "$DOTFILES/dunst/dunstrc" "$XDG_CONFIG_HOME/dunst/dunstrc"
-fi
+esac
 
 # install neovim plugin manager
 # install (or update) all of the plugins

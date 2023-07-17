@@ -26,26 +26,6 @@ autoload -Uz cursor_mode && cursor_mode
 source $DOTFILES/zsh/external/bd.zsh
 source $DOTFILES/zsh/scripts.sh
 
-# set up fzf
-if [ $(command -v "fzf") ]; then
-    # fzf is installed by pacman on Arch
-    source /usr/share/fzf/completion.zsh
-    source /usr/share/fzf/key-bindings.zsh
-elif [ -x "$DOTFILES/zsh/external/fzf/bin/fzf" ]; then
-    export PATH="${PATH:+${PATH}:}$DOTFILES/zsh/external/fzf/bin"
-    source "$DOTFILES/zsh/external/fzf/shell/completion.zsh"
-    source "$DOTFILES/zsh/external/fzf/shell/key-bindings.zsh"
-fi
-
-# start i3 at login
-source $XDG_CONFIG_HOME/i3/start_i3
-
-if [ $(uname -s) != 'Darwin' ]; then
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-    source $XDG_CONFIG_HOME/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
 # setup pyenv
 export PYENV_ROOT=$HOME/.pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -53,3 +33,30 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+
+# set up OS dependent stuff
+case "$OSTYPE" in
+    linux*)
+        # fzf
+        if [ $(command -v "fzf") ]; then
+            # fzf is installed by pacman on Arch
+            source /usr/share/fzf/completion.zsh
+            source /usr/share/fzf/key-bindings.zsh
+        fi
+        # start i3 at login
+        source $XDG_CONFIG_HOME/i3/start_i3
+
+        # zsh-syntax-highlighting should be last item in zshrc
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+    darwin*)
+        if [ $(command -v "fzf") ]; then
+            source "/usr/local/opt/fzf/shell/completion.zsh"
+            source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+        fi
+        # zsh-syntax-highlighting should be last item in zshrc
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    #    source $XDG_CONFIG_HOME/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ;;
+esac
+

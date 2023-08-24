@@ -125,7 +125,7 @@ set $terms "1: terms"
 set $web "2: web"
 set $docker "3: docker"
 set $webdev "4: webdev"
-set $ws5 "5"
+set $chrome "5: chrome"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -137,7 +137,7 @@ bindsym $mod+1 workspace $terms
 bindsym $mod+2 workspace $web
 bindsym $mod+3 workspace $docker
 bindsym $mod+4 workspace $webdev
-bindsym $mod+5 workspace number $ws5
+bindsym $mod+5 workspace $chrome
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
@@ -149,7 +149,7 @@ bindsym $mod+Shift+1 move container to workspace $terms
 bindsym $mod+Shift+2 move container to workspace $web
 bindsym $mod+Shift+3 move container to workspace $docker
 bindsym $mod+Shift+4 move container to workspace $webdev
-bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+5 move container to workspace $chrome
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
@@ -161,6 +161,7 @@ workspace_auto_back_and_forth yes
 
 assign [class="firefoxdeveloperedition" instance="Navigator"] $webdev
 assign [class="Brave-browser" instance="brave-browser"] $web
+assign [class="Google-chrome" instance="google-chrome"] $chrome
 
 # disable focus on mouse
 focus_follows_mouse no

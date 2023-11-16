@@ -22,10 +22,17 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'machakann/vim-sandwich'
 
     " grubox theme
-    Plug 'morhetz/gruvbox'
+    "Plug 'morhetz/gruvbox'
+    Plug 'Luxed/ayu-vim'
+
+    " emmet for htnl development
+    Plug 'mattn/emmet-vim'
     
     " rails development
     "Plug 'tpope/vim-rails'
+    
+    " tmux navigation
+    Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 set clipboard+=unnamedplus
@@ -65,16 +72,24 @@ endif
 nnoremap <leader>f :Files<cr>
 
 " config for gruvbox
-let g:gruvbox_italic=1
-let g:gruvbox_underline=1
+"let g:gruvbox_italic=1
+"let g:gruvbox_underline=1
 "let g:gruvbox_contrast_dark='hard'
-autocmd vimenter * ++nested set background=dark
-autocmd vimenter * ++nested colorscheme gruvbox
+"autocmd vimenter * ++nested set background=dark
+"autocmd vimenter * ++nested colorscheme gruvbox
+
+" config for vim-ayu
+set background=dark
+let g:ayucolor="dark"
+colorscheme ayu
 
 " config for vim-airline
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
+
+" config for Emmet
+let g:user_emmet_leader_key=','
 
 " config for coc.nvim
 " Textedit might fail is hidden is not set

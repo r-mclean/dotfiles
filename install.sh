@@ -28,6 +28,16 @@ rm -rf "$XDG_CONFIG_HOME/zsh/external"
 ln -sf "$DOTFILES/zsh/external" "$XDG_CONFIG_HOME/zsh/external"
 
 ######
+# tmux
+######
+mkdir -p "$XDG_CONFIG_HOME/tmux"
+mkdir -p "$XDG_CONFIG_HOME/tmuxp"
+ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
+[ ! -d "$XDG_CONFIG_HOME/tmux/plugins/tpm ] \
+    && git clone https://github/tmux-plugins/tpm \
+    "$XDG_CONFIG_HOME/tmux/plugins/tpm"
+
+######
 # i3 (this wont run on Mac)
 ######
 rm -rf "$XDG_CONFIG_HOME/i3"

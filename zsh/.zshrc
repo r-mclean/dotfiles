@@ -41,7 +41,7 @@ case "$OSTYPE" in
         if [ $(command -v "fzf") ]; then
             # fzf is installed by pacman on Arch
             source /usr/share/fzf/completion.zsh
-            source /usr/share/fzf/key-bindings.zsh
+            source /usr/share/fzf/key-bindings.zs 
         fi
         # start i3 at login
         source $XDG_CONFIG_HOME/i3/start_i3
@@ -51,11 +51,18 @@ case "$OSTYPE" in
     ;;
     darwin*)
         if [ $(command -v "fzf") ]; then
-            source "/usr/local/opt/fzf/shell/completion.zsh"
-            source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+            if [ -d /opt/homebrew/opt ]; then
+                source "/opt/homebrew/opt/fzf/shell/completion.zsh"
+                source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+                export PATH="/opt/homebrew/bin:$PATH"
+            else
+                source "/usr/local/opt/fzf/shell/completion.zsh"
+                source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+            fi
         fi
         # zsh-syntax-highlighting should be last item in zshrc
-        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        #source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     #    source $XDG_CONFIG_HOME/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
 esac

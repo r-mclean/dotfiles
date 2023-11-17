@@ -28,14 +28,24 @@ rm -rf "$XDG_CONFIG_HOME/zsh/external"
 ln -sf "$DOTFILES/zsh/external" "$XDG_CONFIG_HOME/zsh/external"
 
 ######
+# tmux
+######
+mkdir -p "$XDG_CONFIG_HOME/tmux"
+mkdir -p "$XDG_CONFIG_HOME/tmuxp"
+ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
+[ ! -d "$XDG_CONFIG_HOME/tmux/plugins/tpm ] \
+    && git clone https://github/tmux-plugins/tpm \
+    "$XDG_CONFIG_HOME/tmux/plugins/tpm"
+
+######
 # i3 (this wont run on Mac)
 ######
 rm -rf "$XDG_CONFIG_HOME/i3"
 ln -s "$DOTFILES/i3" "$XDG_CONFIG_HOME"
 
 # Arch linux specific
-if [ $(uname -s) != 'Darwin' ]; then
-
+case "$OSTYPE" in
+    linux*)
     rm -rf "$XDG_CONFIG_HOME/X11"
     ln -s "$DOTFILES/X11" "$XDG_CONFIG_HOME"
 
@@ -50,7 +60,7 @@ if [ $(uname -s) != 'Darwin' ]; then
     #######
     mkdir -p "$XDG_CONFIG_HOME/dunst"
     ln -sf "$DOTFILES/dunst/dunstrc" "$XDG_CONFIG_HOME/dunst/dunstrc"
-fi
+esac
 
 # install neovim plugin manager
 # install (or update) all of the plugins

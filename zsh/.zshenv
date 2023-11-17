@@ -21,6 +21,10 @@ export SAVEHIST=10000
 
 export DOTFILES="$HOME/dotfiles"
 
+# For homebrew
+if [ -d /opt/homebrew/bin ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

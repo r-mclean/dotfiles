@@ -9,7 +9,7 @@ mkdir -p "$XDG_CONFIG_HOME/nvim"
 mkdir -p "$XDG_CONFIG_HOME/nvim/undo"
 ln -sf "$DOTFILES/nvim/init.vim" "$XDG_CONFIG_HOME/nvim"
 
-[! -f "$DOTFILES/nvim/autoload/plug.vim" ] \
+[ ! -f "$DOTFILES/nvim/autoload/plug.vim" ] \
     && curl -fLo "$DOTFILES/nvim/autload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -33,8 +33,8 @@ ln -sf "$DOTFILES/zsh/external" "$XDG_CONFIG_HOME/zsh/external"
 mkdir -p "$XDG_CONFIG_HOME/tmux"
 mkdir -p "$XDG_CONFIG_HOME/tmuxp"
 ln -sf "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
-[ ! -d "$XDG_CONFIG_HOME/tmux/plugins/tpm ] \
-    && git clone https://github/tmux-plugins/tpm \
+[ ! -d "$XDG_CONFIG_HOME/tmux/plugins/tpm" ] \
+    && git clone https://github.com/tmux-plugins/tpm \
     "$XDG_CONFIG_HOME/tmux/plugins/tpm"
 
 ######

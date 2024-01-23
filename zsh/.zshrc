@@ -8,7 +8,7 @@ _comp_options+=(globdots)
 source $DOTFILES/zsh/external/completion.zsh
 fpath=($ZDOTDIR/external $fpath)
 
-autoload -Uz prompt_purification_setup; prompt_purification_setup
+#autoload -Uz prompt_purification_setup; prompt_purification_setup
 #source "$XDG_CONFIG_HOME/zsh/external/spaceship/spaceship.zsh"
 
 # Push the current directory visited onto the stack
@@ -66,4 +66,4 @@ case "$OSTYPE" in
     #    source $XDG_CONFIG_HOME/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
 esac
-
+eval "$(starship init zsh)"

@@ -27,6 +27,10 @@ ln -sf "$DOTFILES/zsh/aliases" "$XDG_CONFIG_HOME/zsh/aliases"
 rm -rf "$XDG_CONFIG_HOME/zsh/external"
 ln -sf "$DOTFILES/zsh/external" "$XDG_CONFIG_HOME/zsh/external"
 
+if [ ! -e /usr/local/bin/starship ]; then
+    curl -sS https://starship.rs/install.sh | sh
+fi
+
 ######
 # tmux
 ######

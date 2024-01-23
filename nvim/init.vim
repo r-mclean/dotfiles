@@ -90,6 +90,8 @@ let g:airline#extensions#branch#enabled=1
 
 " config for Emmet
 let g:user_emmet_leader_key=','
+let g:user_emmet_install_global=0
+autocmd FileType html,css,vue EmmetInstall
 
 " config for coc.nvim
 " Textedit might fail is hidden is not set

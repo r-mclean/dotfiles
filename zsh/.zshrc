@@ -41,7 +41,7 @@ case "$OSTYPE" in
         if [ $(command -v "fzf") ]; then
             # fzf is installed by pacman on Arch
             source /usr/share/fzf/completion.zsh
-            source /usr/share/fzf/key-bindings.zs 
+            source /usr/share/fzf/key-bindings.zsh
         fi
         # start i3 at login
         source $XDG_CONFIG_HOME/i3/start_i3

@@ -37,6 +37,8 @@ fi
 # set up OS dependent stuff
 case "$OSTYPE" in
     linux*)
+        # ranger
+        export RANGER_LOAD_DEFAULT_RC=FALSE
         # fzf
         if [ $(command -v "fzf") ]; then
             # fzf is installed by pacman on Arch

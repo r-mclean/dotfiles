@@ -1,5 +1,5 @@
 alias vim=nvim
-alias ll='ls -lah'
+alias ll='eza -lah'
 alias gst='git status'
 alias ga='git add'
 alias gc='git commit'

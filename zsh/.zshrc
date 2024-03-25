@@ -50,20 +50,22 @@ case "$OSTYPE" in
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
     darwin*)
-        if [ $(command -v "fzf") ]; then
-            if [ -d /opt/homebrew/opt ]; then
-                source "/opt/homebrew/opt/fzf/shell/completion.zsh"
-                source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
-                export PATH="/opt/homebrew/bin:$PATH"
-            else
-                source "/usr/local/opt/fzf/shell/completion.zsh"
-                source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-            fi
+        if [ -d /opt/homebrew/opt ]; then
+            opt_path=/opt/homebrew/opt
+            share_path=/opt/homebrew/share
+            export PATH="/opt/homebrew/bin:$PATH"
+        else
+            opt_path=/usr/local/opt
+            share_path=/usr/local/share
         fi
+
+        if [ $(command -v "fzf") ]; then
+            source $opt_path/fzf/shell/completion.zsh
+            source $opt_path/fzf/shell/key-bindings.zsh
+        fi
+
         # zsh-syntax-highlighting should be last item in zshrc
-        #source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    #    source $XDG_CONFIG_HOME/zsh/external/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        source $share_path/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
 esac
 eval "$(starship init zsh)"

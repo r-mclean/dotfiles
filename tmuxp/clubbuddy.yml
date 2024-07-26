@@ -1,0 +1,23 @@
+session_name: clubbuddy
+
+windows:
+  - window_name: Development
+    layout: even-horizontal
+    panes:
+      - shell_command:
+        - git status
+        start_directory: $HOME/dev/apps/clubbuddy
+      - shell_command:
+        - tmux split-window
+        start_directory: $HOME/dev/Prod/cb_data
+
+  - window_name: Frozen
+    start_directory: $HOME/dev/Prod
+    layout: even-horizontal
+    panes:
+      - shell_command:
+        - git status
+        start_directory: ./clubbuddy
+      - 
+        start_directory: ./cb_data
+

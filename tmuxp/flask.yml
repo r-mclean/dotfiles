@@ -1,0 +1,10 @@
+session_name: flask
+
+windows:
+  - window_name: Development
+    start_directory: $HOME/dev/learn/flask/packt
+    layout: even-horizontal
+    panes:
+      - shell_command:
+        - git status
+      - 
